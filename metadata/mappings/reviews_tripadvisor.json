@@ -1,0 +1,32 @@
+{
+   "@context": {
+      "ont": "http://schema.org/ontology/",
+
+      "@base": "http://schema.org/resource/",
+      "@Review": "http://schema.org/ontology/Review",
+
+      "review_id": "@id",
+
+      "eatery_id": {
+         "@id": "ont:about",
+         "@type": "@id"
+      },
+
+      "uid": {
+         "@id": "ont:writtenBy",
+         "@type": "@id"
+      },
+
+      
+      "review_title": "ont:title",
+      "review_text": "ont:content",
+      "review_rating": {
+         "@id": "ont:rating",
+         "@type": "xsd:integer"
+      }
+   },
+
+   "@type": "@Review"
+}
+
+

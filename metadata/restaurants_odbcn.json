@@ -1,0 +1,9 @@
+[
+    {
+        "filename": "data/restaurants.rdf",
+        "mapper": "sparql",
+        "mapping": "metadata/mappings/restaurants_odbcn.json",
+        "format": "xml",
+        "output": "mapped_sources/restaurants_odbcn.ttl"
+    }
+]

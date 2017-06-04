@@ -1,0 +1,14 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ont: <http://schema.org/ontology/> .
+@prefix : <http://schema.org/resource/> .
+
+ont:writtenBy rdfs:domain ont:Review .
+ont:writtenBy rdfs:range ont:User .
+
+ont:about rdfs:domain ont:Review .
+ont:about rdfs:range ont:Restaurant .
+
+ont:Restaurant rdfs:subClassOf ont:Place .
+ont:transportExit rdfs:subPropertyOf ont:isLocated .

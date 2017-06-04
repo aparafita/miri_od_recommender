@@ -1,0 +1,23 @@
+{
+    "query": "SELECT ?id ?name ?lat ?lon ?url ?email ?tel\nWHERE { \n?s rdf:type v:VCard .\n?s dct:identifier ?id .\n?s v:fn ?name .\n?s v:geo ?geo .\n?geo v:latitude ?lat .\n?geo v:longitude ?lon .\n?s v:url ?url .\n?s v:email ?email .\n?s v:tel ?btel .\n?btel rdf:value ?tel \n}",
+
+    "namespaces": {
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "v": "http://www.w3.org/2006/vcard/ns#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "dct": "http://purl.org/dc/terms/",
+        "ont": "http://schema.org/ontology/",
+        "": "http://schema.org/resource/"
+    },
+
+    "context": {
+        "@id": ":restaurant_odbcn_{id}",
+        "@type": "ont:Restaurant",
+        "?name": "foaf:name",
+        "?lat": "ont:latitude",
+        "?lon": "ont:longitude",
+        "?url": "ont:url",
+        "?email": "ont:email",
+        "?tel": "ont:phone"
+    }
+}

@@ -1,0 +1,70 @@
+{
+   "@context": {
+      "id": "@id",
+
+      "@base": "http://schema.org/resource/",
+      "@Restaurant": "http://schema.org/ontology/Restaurant",
+
+      "Monday": "http://schema.org/resource/Monday",
+      "Tuesday": "http://schema.org/resource/Tuesday",
+      "Wednesday": "http://schema.org/resource/Wednesday",
+      "Thursday": "http://schema.org/resource/Thursday",
+      "Friday": "http://schema.org/resource/Friday",
+      "Saturday": "http://schema.org/resource/Saturday",
+      "Sunday": "http://schema.org/resource/Sunday",
+
+      "name": "http://xmlns.com/foaf/0.1/name",
+      "cuisine": "http://schema.org/ontology/restaurantCuisine",
+      "open_hours": "http://schema.org/ontology/restaurantOpenHours",
+      "average_prices_to": "http://schema.org/ontology/priceRange",
+      "location": "http://schema.org/ontology/location",
+
+      "latitude": {
+         "@id": "http://schema.org/ontology/latitude",
+         "@type": "xsd:float"
+      },
+      "longitude": {
+         "@id": "http://schema.org/ontology/longitude",
+         "@type": "xsd:float"
+      },
+
+      "address": "http://schema.org/ontology/address",
+      "phone": "http://schema.org/ontology/telephone",
+
+      "href": {
+         "@id": "http://schema.org/ontology/url",
+         "@type": "@id"
+      },
+
+      "gmaps_uri": "http://schema.org/ontology/map",
+
+      "restaurant_features": "http://schema.org/ontology/restaurantFeatures",
+      "meals": "http://schema.org/ontology/restaurantMeals",
+      "good_for": "http://schema.org/ontology/restaurantGoodFor",
+
+      "rating": {
+         "@id": "http://schema.org/ontology/rating",
+         "@type": "xsd:float"
+      },
+      "rating_service": {
+         "@id": "http://schema.org/ontology/ratingService",
+         "@type": "xsd:float"
+      },
+      "rating_atmosphere": {
+         "@id": "http://schema.org/ontology/ratingAtmosphere",
+         "@type": "xsd:float"
+      },
+      "rating_value": {
+         "@id": "http://schema.org/ontology/ratingValue",
+         "@type": "xsd:float"
+      },
+      "rating_food": {
+         "@id": "http://schema.org/ontology/ratingFood",
+         "@type": "xsd:float"
+      }
+   },
+
+   "@type": "@Restaurant"
+}
+
+

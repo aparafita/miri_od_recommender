@@ -1,0 +1,14 @@
+[
+    {
+        "filename": "data/restaurants.json",
+        "mapper": "json",
+        "context": "metadata/mappings/restaurants_tripadvisor.json",
+        "output": "mapped_sources/restaurants_tripadvisor.ttl"
+    },
+    {
+        "filename": "data/reviews.json.gz",
+        "mapper": "json",
+        "context": "metadata/mappings/reviews_tripadvisor.json",
+        "output": "mapped_sources/reviews_tripadvisor.ttl"
+    }
+]
