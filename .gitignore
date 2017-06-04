@@ -1,0 +1,8 @@
+.DS_Store
+*.gz
+*.csv
+data/
+mapped_sources/
+.ipynb_checkpoints/
+tripadvisor_scrapping/
+docs/
