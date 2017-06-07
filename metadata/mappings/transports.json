@@ -1,0 +1,29 @@
+{
+    "@namespaces": {
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "ont": "http://schema.org/ontology/",
+        "": "http://schema.org/resource/"
+    },
+
+    "@id": {
+        "idx": "index",
+        "@template": ":transport_{idx}"
+    },
+    "@class": "ont:Transport",
+
+    "type": "ont:transportType",
+    "line": "ont:transportLine",    
+    "name": "foaf:name",
+    "exit": "ont:exit",
+    "latitude": {
+        "@id": "ont:latitude",
+        "@type": "xsd:float"
+    },
+    "longitude": {
+        "@id": "ont:longitude",
+        "@type": "xsd:float"
+    },
+    "district": "ont:district",
+    "neighborhood": "ont:neighborhood"
+}

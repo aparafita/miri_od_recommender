@@ -19,6 +19,9 @@ from rdflib.namespace import RDF, RDFS, FOAF
 from rdflib.plugin import register, Parser
 register('json-ld', Parser, 'rdflib_jsonld.parser', 'JsonLDParser')
 
+import pandas as pd
+np = pd.np
+
 
 class Mapper:
 
@@ -42,6 +45,7 @@ class Mapper:
     def rdflib(filename, format):
         return Graph().parse(filename, format=format)
 
+
     @staticmethod
     def json(filename, context=None):
         data = read_json(filename)
@@ -53,6 +57,7 @@ class Mapper:
                 d.update(context)
 
         return Graph().parse(data=json.dumps(data), format='json-ld')
+
 
     @staticmethod
     def sparql(filename, mapping, format):
@@ -102,6 +107,76 @@ class Mapper:
                 graph.add(
                     (subject, predicate, Literal(row[var_name]))
                 )
+
+        return graph
+
+    @staticmethod
+    def csv(filename, mapping, **read_csv_kwargs):
+        df = pd.read_csv(filename, **read_csv_kwargs)
+        mapping = read_json(mapping)
+
+        namespaces = mapping.pop('@namespaces', {})
+
+        mapping = {
+            k: v if type(v) == dict else { '@id': v }
+
+            for k, v in mapping.items()
+        }
+
+        # Replace prefixes from the namespaces
+        for d in mapping.values():
+            for k, v in d.items():
+                if k.startswith('@'):
+                    for prefix, url in namespaces.items():
+                        if v.startswith(prefix + ':'):
+                            v = v.replace(prefix + ':', url)
+                            break
+
+                    d[k] = URIRef(v)
+
+        id_mapping = mapping['@id']
+        id_template = id_mapping.pop('@template')
+
+        if '@class' in mapping:
+            subject_class = mapping['@class']['@id']
+        else:
+            subject_class = None
+
+        col_mapping = {
+            k: v
+
+            for k, v in mapping.items()
+            if not k.startswith('@')
+        }
+
+    
+        graph = Graph()
+
+        for prefix, url in namespaces.items():
+            graph.bind(prefix, url)
+
+        for _, row in df.iterrows():
+            subject = URIRef(
+                id_template.format(
+                    **{
+                        k: row[col]
+
+                        for k, col in id_mapping.items()
+                    }
+                )
+            )
+            
+            if subject_class:
+                graph.add((subject, RDF.type, subject_class))
+
+            for col, v in row.dropna().items():
+                if col in col_mapping:
+                    d = col_mapping[col]
+
+                    predicate = d['@id']
+                    obj = Literal(row[col], datatype=d.get('@type'))
+                    
+                    graph.add((subject, predicate, obj))
 
         return graph
 

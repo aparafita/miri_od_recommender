@@ -1,0 +1,8 @@
+[
+    {
+        "filename": "data/transports_preprocessed.csv",
+        "mapper": "csv",
+        "mapping": "metadata/mappings/transports.json",
+        "output": "mapped_sources/transports.ttl"
+    }
+]
